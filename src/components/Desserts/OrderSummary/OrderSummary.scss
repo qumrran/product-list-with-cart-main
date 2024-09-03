@@ -1,0 +1,52 @@
+@import '../../styles/variables.scss';
+
+.order-summary-container {
+    max-width: 20rem;
+    height: 17rem;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	background-color: $rose-50;
+	border-radius: 0.6rem;
+	padding: 0 1rem;
+	@media screen and (min-width: 1112px) {
+		margin-left: 1rem;
+		 
+	}
+	
+	.order-summary-header {
+		font-size: 1.5rem;
+		font-family: $font-family-sans;
+		font-weight: 700;
+		color: $red;
+	}
+
+	.carbon-neutral-delivery-container {
+		background-color: $rose-100;
+		width: 100%;
+		border-radius: 0.5rem;
+		margin-bottom: 2rem;
+		.carbon-neutral-delivery-message {
+			font-family: $font-family-sans;
+
+			font-size: 0.8rem;
+		}
+	}
+
+	.confirm-order-button {
+		height: 3.3rem;
+		width: 100%;
+		border-radius: 2.5rem;
+		cursor: pointer;
+		background-color: $red;
+		color: $rose-50;
+		border: none;
+		font-family: $font-family-sans;
+		font-weight: 400;
+		margin-bottom: 2rem;
+		transition: background-color 0.3s ease;
+		&:hover {
+			background-color: $rose-500;
+		}
+	}
+}

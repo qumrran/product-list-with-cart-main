@@ -1,0 +1,50 @@
+@import '../../styles/variables.scss';
+
+.add-to-card {
+    position: absolute;
+    bottom: -1rem;
+	.add-to-card-button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 10rem;
+		height: 2.625rem;
+		border-radius: 1.25rem;
+		font-family: $font-family-sans;
+		font-weight: 500;
+		border: 0.1rem solid $rose-400;
+		background-color: $rose-50;
+		cursor: pointer;
+
+		img {
+			padding-right: 0.4rem;
+		}
+	}
+
+	.quantity-controls {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+        padding: 0 0.8rem;
+		width: 10rem;
+		height: 2.625rem;
+		border-radius: 1.25rem;
+		background-color: $red;
+        color: $rose-50;
+        font-family: $font-family-sans;
+        font-size: .9rem;
+		.decrement-button,
+		.increment-button {
+            display: flex;
+		align-items: center;
+		justify-content: center;
+			background-color: $red;
+			border: none; 
+			width: 1.1rem;
+            height: 1.1rem;
+			border-radius: 50%; 
+            border: 1px solid $rose-50;
+			cursor: pointer; 
+		}
+	}
+}
