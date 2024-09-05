@@ -1,33 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '../../../data/CartContext';
 import './AddToCardBtn.scss';
 
 function AddToCardBtn({ dessert }) {
-  const [isAdding, setIsAdding] = useState(false);
-  const [quantity, setQuantity] = useState(1);
-  const { addItemToCart } = useCart();
+  const { cartItems, addItemToCart, removeItemFromCart } = useCart();
+  const [quantity, setQuantity] = useState(0);
+
+  useEffect(() => {
+    
+    const itemInCart = cartItems.find(item => item.name === dessert.name);
+    if (itemInCart) {
+      setQuantity(itemInCart.quantity);
+    } else {
+      setQuantity(0); 
+    }
+  }, [cartItems, dessert.name]);
 
   const handleAddClick = () => {
-    addItemToCart({ ...dessert, quantity });
-    setIsAdding(true);
-    setQuantity(1); // Reset quantity after adding
+    if (quantity === 0) {
+      addItemToCart({ ...dessert, quantity: 1 });
+      setQuantity(1);
+    }
   };
 
   const handleIncrement = () => {
-    setQuantity(quantity + 1);
+    const newQuantity = quantity + 1;
+    setQuantity(newQuantity);
+    addItemToCart({ ...dessert, quantity: newQuantity });
   };
 
   const handleDecrement = () => {
     if (quantity > 1) {
-      setQuantity(quantity - 1);
+      const newQuantity = quantity - 1;
+      setQuantity(newQuantity);
+      addItemToCart({ ...dessert, quantity: newQuantity });
     } else {
-      setIsAdding(false); // Reset state when quantity is zero
+      setQuantity(0);
+      removeItemFromCart(dessert.name);
     }
   };
 
   return (
     <div className="add-to-card">
-      {!isAdding ? (
+      {quantity === 0 ? (
         <button onClick={handleAddClick} className="add-to-card-button">
           <img src='/assets/images/icon-add-to-cart.svg' alt="Add to Cart" />
           Add to Cart

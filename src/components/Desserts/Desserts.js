@@ -38,7 +38,8 @@ function Desserts({ data }) {
 								/>
 							</picture>
 
-							<AddToCardBtn />
+							<AddToCardBtn dessert={dessert} />
+
 						</div>
 
 						<div className='dessert-details'>

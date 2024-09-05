@@ -9,12 +9,25 @@ export function CartProvider({ children }) {
 
   // Dodawanie przedmiotu do koszyka
   const addItemToCart = (item) => {
-    setCartItems((prevItems) => [...prevItems, item]);
+    setCartItems((prevItems) => {
+      const existingItemIndex = prevItems.findIndex(i => i.name === item.name);
+      if (existingItemIndex !== -1) {
+        const updatedItems = [...prevItems];
+        updatedItems[existingItemIndex] = {
+          ...updatedItems[existingItemIndex],
+          quantity: item.quantity
+        };
+        return updatedItems;
+      }
+      return [...prevItems, item];
+    });
   };
 
   // Usuwanie przedmiotu z koszyka
-  const removeItemFromCart = (itemId) => {
-    setCartItems((prevItems) => prevItems.filter(item => item.id !== itemId));
+  const removeItemFromCart = (itemName) => {
+    setCartItems((prevItems) =>
+      prevItems.filter(item => item.name !== itemName)
+    );
   };
 
   return (
