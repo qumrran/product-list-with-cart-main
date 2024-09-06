@@ -1,13 +1,13 @@
 import React, { createContext, useState, useContext } from 'react';
 
-// Tworzymy kontekst
+
 const CartContext = createContext();
 
-// Komponent Provider dla CartContext
+
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
 
-  // Dodawanie przedmiotu do koszyka
+ 
   const addItemToCart = (item) => {
     setCartItems((prevItems) => {
       const existingItemIndex = prevItems.findIndex(i => i.name === item.name);
@@ -30,12 +30,17 @@ export function CartProvider({ children }) {
     );
   };
 
+  // Resetowanie koszyka
+  const resetCart = () => {
+    setCartItems([]);
+  };
+
   return (
-    <CartContext.Provider value={{ cartItems, addItemToCart, removeItemFromCart }}>
+    <CartContext.Provider value={{ cartItems, addItemToCart, removeItemFromCart, resetCart }}>
       {children}
     </CartContext.Provider>
   );
 }
 
-// Customowy hook do używania kontekstu
+
 export const useCart = () => useContext(CartContext);

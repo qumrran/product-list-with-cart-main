@@ -7,13 +7,8 @@ function AddToCardBtn({ dessert }) {
   const [quantity, setQuantity] = useState(0);
 
   useEffect(() => {
-    
     const itemInCart = cartItems.find(item => item.name === dessert.name);
-    if (itemInCart) {
-      setQuantity(itemInCart.quantity);
-    } else {
-      setQuantity(0); 
-    }
+    setQuantity(itemInCart ? itemInCart.quantity : 0);
   }, [cartItems, dessert.name]);
 
   const handleAddClick = () => {
