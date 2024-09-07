@@ -39,17 +39,17 @@ function AddToCardBtn({ dessert }) {
     <div className="add-to-card">
       {quantity === 0 ? (
         <button onClick={handleAddClick} className="add-to-card-button">
-          <img src='/assets/images/icon-add-to-cart.svg' alt="Add to Cart" />
+          <img src='./assets/images/icon-add-to-cart.svg' alt="Add to Cart" />
           Add to Cart
         </button>
       ) : (
         <div className="quantity-controls">
           <button onClick={handleDecrement} className="decrement-button">
-            <img src='/assets/images/icon-decrement-quantity.svg' alt="Decrement" />
+            <img src='./assets/images/icon-decrement-quantity.svg' alt="Decrement" />
           </button>
           <span className="quantity-display">{quantity}</span>
           <button onClick={handleIncrement} className="increment-button">
-            <img src='/assets/images/icon-increment-quantity.svg' alt="Increment" />
+            <img src='./assets/images/icon-increment-quantity.svg' alt="Increment" />
           </button>
         </div>
       )}
